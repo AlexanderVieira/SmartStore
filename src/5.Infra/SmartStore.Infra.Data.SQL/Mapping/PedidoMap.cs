@@ -9,7 +9,16 @@ namespace SmartStore.Infra.Data.SQL.Mapping
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            throw new NotImplementedException();
+            builder.Property(c => c.Id)
+                .HasColumnName("Id");
+
+            builder.Property(c => c.Instante)
+                .HasColumnType("DateTime(0)")
+                .IsRequired();            
+
+            builder.Property(c => c.Total)
+                .HasColumnType("decimal(10,2)")
+                .IsRequired();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartStore.Domain.Model.Models;
 using SmartStore.Infra.Data.SQL.Mapping;
+using System;
 using System.Linq;
 
 namespace SmartStore.Infra.Data.SQL.Context
@@ -11,12 +12,13 @@ namespace SmartStore.Infra.Data.SQL.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<ItemPedido> ItemPedidos { get; set; }
+        public DbSet<ProdutoCategoria> ProdutoCategorias { get; set; }
 
         public SmartStoreDbContext(DbContextOptions<SmartStoreDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=.\\Data;Database=SmartStoreDB;Trusted_Connection=True");
+            //optionsBuilder.UseMySql("server=mysql;port=3306;userid=root;password='';database=SmartStoreDB;");
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -34,6 +36,15 @@ namespace SmartStore.Infra.Data.SQL.Context
             modelBuilder.ApplyConfiguration(new PedidoMap());
             modelBuilder.ApplyConfiguration(new ItemPedidoMap());
             modelBuilder.ApplyConfiguration(new ProdutoCategoriaMap());
+
+            //modelBuilder.Entity<Produto>()
+            //    .HasData(
+            //        new Produto { Id = Guid.NewGuid(), Tag = "1971C36E", Marca = "Samsung", Modelo = "Smartphone A10s", Descricao = "Memória RAM: 2GB", Valor = 949.00m },
+            //        new Produto { Id = Guid.NewGuid(), Tag = "E12B6320", Marca = "LG", Modelo = "Smartphone K50s", Descricao = "Memória RAM: 3GB", Valor = 989.00m },
+            //        new Categoria { Id = Guid.NewGuid(), Nome = "Telefonia"  },
+            //        new Pedido { Id = Guid.NewGuid(), Instante = DateTime.Now }
+            //    );
+
             base.OnModelCreating(modelBuilder);
         }
     }

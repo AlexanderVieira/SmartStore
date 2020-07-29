@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\5.Infra\SmartStore.Infra.Data.SQL\SmartStore.Infra.Data.SQL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,8 @@ namespace SmartStore.Infra.Data.SQL.Mapping
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
-            throw new NotImplementedException();
+            builder.Property(c => c.Id)
+                .HasColumnName("Id");            
         }
     }
 }
